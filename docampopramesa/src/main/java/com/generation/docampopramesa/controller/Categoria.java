@@ -15,7 +15,7 @@ package com.generation.docampopramesa.controller;
 	import org.springframework.web.bind.annotation.RequestMapping;
 	import org.springframework.web.bind.annotation.RestController;
 
-	import com.generation.docampopramesa.model.CategoriaModel;
+	import com.generation.docampopramesa.model.Categoria;
 	import com.generation.docampopramesa.repository.CategoriaRepository;
 
 	@RestController
@@ -27,30 +27,30 @@ package com.generation.docampopramesa.controller;
 		private CategoriaRepository repository;
 		
 		@GetMapping
-		public ResponseEntity<List<CategoriaModel>> findAllCategoria(){
+		public ResponseEntity<List<Categoria>> getAll(){
 			return ResponseEntity.ok(repository.findAll());
 		}
 		
-		@GetMapping ("/{id}")
-		public ResponseEntity<CategoriaModel> findByIdCategoria (@PathVariable long id){
-			return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
-					.orElse(ResponseEntity.notFound().build());
+		@GetMapping("/{id}")
+		public ResponseEntity<Categoria> getById(@PathVariable long id){
+			return repository.findById(id)
+					.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 		}
 		
 		@PostMapping
-		public ResponseEntity<CategoriaModel> postCategoria (@RequestBody CategoriaModel categoriaModel){
+		public ResponseEntity<Categoria> post (@RequestBody Categoria categoria){
 			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(repository.save(categoriaModel));
+					.body(repository.save(categoria));
 		}
 		
+		
 		@PutMapping
-		public ResponseEntity<CategoriaModel> putCategoria (@RequestBody CategoriaModel categoriaModel){
-			return ResponseEntity.status(HttpStatus.OK)
-					.body(repository.save(categoriaModel));
+		public ResponseEntity<Categoria> put (@RequestBody Categoria categoria){
+			return ResponseEntity.ok(repository.save(categoria));
 		}
 		
 		@DeleteMapping("/{id}")
-		public void deleteCategoria(@PathVariable long id) {
+		public void delete (@PathVariable long id) {
 			repository.deleteById(id);
 		}
 

@@ -3,11 +3,12 @@ package com.generation.docampopramesa.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.generation.docampopramesa.model.CategoriaModel;
+import com.generation.docampopramesa.model.Categoria;
 
-
-public interface CategoriaRepository extends JpaRepository<CategoriaModel, Long> {
-	public List<CategoriaModel> findAllBySetorContainingIgnoreCase (String setor);
+@Repository
+public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
+	public List<Categoria> findAllByNomeContainingIgnoreCase (String nome);
 	
 }
