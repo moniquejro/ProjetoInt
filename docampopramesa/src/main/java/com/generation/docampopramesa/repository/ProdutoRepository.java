@@ -1,11 +1,13 @@
-package com.generation.docampopramesa.repository;
+package br.com.generation.docampoparamesa.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.generation.docampopramesa.model.Produto;
+import br.com.generation.docampoparamesa.model.Produto;
 
+@Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
     
 	public List<Produto> findAllByNomeContainingIgnoreCase(String nome);
