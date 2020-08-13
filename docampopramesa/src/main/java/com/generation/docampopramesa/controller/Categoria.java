@@ -15,7 +15,6 @@ package com.generation.docampopramesa.controller;
 	import org.springframework.web.bind.annotation.RequestMapping;
 	import org.springframework.web.bind.annotation.RestController;
 
-	import com.generation.docampopramesa.model.Categoria;
 	import com.generation.docampopramesa.repository.CategoriaRepository;
 
 	@RestController
@@ -27,14 +26,14 @@ package com.generation.docampopramesa.controller;
 		private CategoriaRepository repository;
 		
 		@GetMapping
-		public ResponseEntity<List<Categoria>> getAll(){
+		public ResponseEntity<List<com.generation.docampopramesa.model.Categoria>> findAll(){
 			return ResponseEntity.ok(repository.findAll());
 		}
 		
-		@GetMapping("/{id}")
-		public ResponseEntity<Categoria> getById(@PathVariable long id){
-			return repository.findById(id)
-					.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+		@GetMapping ("/{id}")
+		public ResponseEntity<com.generation.docampopramesa.model.Categoria> findByIdCategoria (@PathVariable long id){
+			return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
+					.orElse(ResponseEntity.notFound().build());
 		}
 		
 		@PostMapping
