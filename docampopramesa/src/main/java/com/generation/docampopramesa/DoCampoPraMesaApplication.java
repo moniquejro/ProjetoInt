@@ -1,4 +1,4 @@
-package com.generation.docampopramesa;
+package br.com.generation.docampoparamesa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
